@@ -1,0 +1,191 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
+}
+
+body {
+	background-color: #967bb6;
+	height: 100%;
+}
+
+.container {
+	width: 1170px;
+	margin: 0 auto;
+}
+
+header>.container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 50px;
+}
+
+.date {
+	color: #fff;
+	font-size: 14px;
+}
+
+.signIn,
+.register,
+.logout,
+.createTheme,
+.usersThemes,
+.backToForum,
+.moderating,
+.approveTheme {
+	border: none;
+	padding: 10px 25px;
+	border-radius: 15px;
+	cursor: pointer;
+	font-size: 14px;
+	display: inline-block;
+	margin-left: 10px;
+	outline: none;
+}
+
+.signIn {
+	background-color: #fff;
+	color: #000;
+}
+
+.register,
+.logout,
+.createTheme,
+.usersThemes,
+.backToForum,
+.moderating,
+.approveTheme {
+	background-color: #4d0f28;
+	color: #fff;
+	text-decoration: none;
+}
+
+.approveTheme {
+	margin-left: 0;
+	margin-top: 10px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+textarea {
+	border-radius: 10px;
+	padding: 7px 15px;
+	outline: none;
+	border: none;
+}
+
+form {
+	display: inline-block;
+}
+
+.msg {
+	color: #4d0f28;
+	margin-top: 20px;
+}
+
+.username {
+	color: #fff;
+}
+
+.themes {
+	margin-top: 100px;
+}
+
+.theme {
+	background-color: #b195d2;
+	color: #fff;
+	padding: 10px 30px;
+}
+
+.theme:nth-child(even) {
+	background-color: #cdb0ee;
+}
+
+.title>a {
+	color: #fff;
+	margin-bottom: 20px;
+	text-decoration: none;
+	position: relative;
+}
+
+.title>a::after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background-color: #fff;
+	position: absolute;
+	bottom: -5px;
+	left: 0;
+}
+
+.author {
+	margin-top: 20px;
+}
+
+.author,
+.dateTheme {
+	font-size: 12px;
+}
+
+.createTheme,
+.usersThemes,
+.backToForum {
+	margin-bottom: 20px;
+}
+
+.text {
+	padding-top: 20px;
+}
+
+.title {
+	color: #fff;
+}
+
+.answers {
+	margin-top: 20px;
+}
+
+.leaveAnswer>form {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+}
+
+.leaveAnswer>form>textarea{ 
+	width: 400px;
+	height: 100px;
+	display: inline-block;
+	margin-top: 20px;
+}
+
+.leaveAnswer>form>input {
+	margin: 0;
+	background-color: #4d0f28;
+	color: #fff;
+	display: inline-block;
+	margin-top: 20px;
+}
+
+.answer {
+	margin: 30px 0;
+	color: #fff;
+}
+
+.answerAuthor {
+	margin-bottom: 5px;
+}
+
+.answerDate {
+	font-size: 11px;
+	margin-top: 10px;
+}
+
+.logo {
+	float: right;
+	position: absolute;
+	margin-top: 16px;
+	margin-bottom: 16px;
+}

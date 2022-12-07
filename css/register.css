@@ -1,0 +1,22 @@
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+input {
+	display: block;
+	margin-bottom: 20px;
+}
+
+input[type="submit"] {
+	outline: none;
+	border: none;
+	background-color: #4d0f28;
+	color: #fff;
+	padding: 7px 15px;
+	margin: 0 auto;
+	cursor: pointer;
+	border-radius: 15px
+}

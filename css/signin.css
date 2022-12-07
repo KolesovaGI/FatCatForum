@@ -1,0 +1,30 @@
+.wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+
+input {
+	display: block;
+	margin-bottom: 20px;
+}
+
+input[type="submit"] {
+	outline: none;
+	border: none;
+	padding: 7px 15px;
+	margin: 0 auto;
+	cursor: pointer;
+	border-radius: 15px
+}
+
+.register {
+	background-color: transparent;
+	color: #4d0f28;
+	padding: 0;
+}
+
+textarea {
+	resize: none;
+}
