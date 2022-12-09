@@ -7,8 +7,12 @@
 		header('Location: ../index.php');
 	}
 
-	$query = "SELECT * FROM `themes` WHERE user_id = " . $_SESSION[user][id] . " ORDER BY date DESC";
-	$result = mysqli_query($connect, $query) or die("Ошибка " . mysqli_error($connect));
+	$stmt = $connect->prepare("SELECT * FROM `themes` WHERE user_id = ? ORDER BY date DESC");
+    $stmt->bind_param("s", $_SESSION[user][id]);
+    $stmt->execute();
+    $stmt->bind_result($result);
+
+    $stmt->fetch();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +34,8 @@
 
 					for($i = 1; $i <= $rows; $i++)
 					{
-						$row = mysqli_fetch_assoc($result);
+		            	$row = $result->fetch_assoc();
+						
 						$author = mysqli_fetch_assoc(mysqli_query($connect, "SELECT surname, name FROM `users` WHERE id = $row[user_id]"));		
 						
 						echo 

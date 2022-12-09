@@ -4,8 +4,15 @@
 
 	$email = $_POST['email'];
 	$password = $_POST['password'];
-	$check_user = mysqli_query($connect, "SELECT * FROM `users` WHERE `email` = '$email' AND `password` = '$password'");
 
+	
+    $stmt = $connect->prepare("SELECT * FROM `users` WHERE `email` = ? AND `password` = ?");
+    $stmt->bind_param("ss", $email, $password);
+    $stmt->execute();
+    $stmt->bind_result($check_user);
+
+    $stmt->fetch();
+	
 	if(mysqli_num_rows($check_user) > 0)
 	{
 		$user = mysqli_fetch_assoc($check_user);

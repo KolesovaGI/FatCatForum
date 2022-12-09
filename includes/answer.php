@@ -6,8 +6,12 @@
     $author = $_SESSION['user']['surname'] . ' ' . $_SESSION['user']['name'];
     $date = date('Y-m-d H:i:s');
 
-	$sql = "INSERT INTO `answers` (author, text, theme_id, date) VALUES ('$author', '$answer', '1', '$date')";  // Добавление комментария в БД
-	$result = mysqli_query($connect, $sql);
+    $stmt = $connect->prepare("INSERT INTO `answers` (author, text, theme_id, date) VALUES ('?', '?', '1', '?')");
+    $stmt->bind_param("sss", $author, $answer, $date);
+    $stmt->execute();
+    $stmt->bind_result($result);
+
+    $stmt->fetch();
 
 	if($result)
     {

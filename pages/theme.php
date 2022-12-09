@@ -2,8 +2,13 @@
     session_start();
     require_once '../includes/connection.php';
 
-    $query = mysqli_query($connect, "SELECT * FROM `themes` WHERE id = " . $_GET['id']);
-    $result = mysqli_fetch_assoc($query);
+    $stmt = $connect->prepare("SELECT * FROM `themes` WHERE id = ?");
+    $stmt->bind_param("s", $_GET['id']);
+    $stmt->execute();
+    $stmt->bind_result($result);
+
+    $stmt->fetch();
+    $result = $result->fetch_assoc();
 ?>
 <!DOCTYPE html>
 <html>
@@ -37,10 +42,15 @@
         </section>
         <section class="container answers">
             <h2 class="title">Ответы</h2>
-            <?php 
-                $query = mysqli_query($connect, "SELECT * FROM `answers` WHERE theme_id = " . $_GET['id']) or die("Ошибка " . mysqli_error($connect));
+            <?php
+                $stmt = $connect->prepare("SELECT * FROM `answers` WHERE theme_id = ?");
+                $stmt->bind_param("s", $_GET['id']);
+                $stmt->execute();
+                $stmt->bind_result($result);
 
-                while($result = mysqli_fetch_assoc($query))
+                $stmt->fetch();
+
+                while($result = $result->fetch_assoc())
                 {
                     echo 
 						'<div class="answer">
@@ -65,7 +75,10 @@
         $author = $_SESSION['user']['surname'] . ' ' . $_SESSION['user']['name'];
         $date = date('Y-m-d H:i:s');
         $theme_id = $_GET['id'];
-        $result = mysqli_query($connect, "INSERT INTO `answers` (author, text, theme_id, date) VALUES ('$author', '$answer', '$theme_id', '$date')");
+
+        $stmt = $connect->prepare("INSERT INTO `answers` (author, text, theme_id, date) VALUES ('?', '?', '?', '?')");
+        $stmt->bind_param("ssss", $author, $answer, $theme_id, $date);
+        $stmt->execute();
     }
         ?>
 </body>
